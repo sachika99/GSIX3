@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GSIX5 - Coming Soon</title>
+    <title>GSIX3</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -49,28 +49,45 @@
 
         /* Enhanced Custom Cursor */
         .cursor {
-            width: 12px;
-            height: 12px;
-            background: var(--primary);
+            width: 8px;
+            height: 8px;
+            background: var(--white);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
             z-index: 9999;
-            transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: width 0.3s ease, height 0.3s ease, background 0.3s ease;
             transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            mix-blend-mode: difference;
         }
 
         .cursor-follower {
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--primary);
+            width: 32px;
+            height: 32px;
+            border: 2px solid var(--primary);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
             z-index: 9998;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0.3;
+            transition: width 0.4s ease, height 0.4s ease, border-color 0.4s ease, opacity 0.4s ease, background 0.4s ease;
+            opacity: 0.6;
             transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(74, 111, 255, 0.1), transparent);
+        }
+        
+        .cursor.cursor-hover {
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+        }
+        
+        .cursor-follower.cursor-hover {
+            width: 50px;
+            height: 50px;
+            border-color: var(--secondary);
+            opacity: 0.8;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15), transparent);
         }
 
         /* Crystal Effect Background - FIXED */
@@ -356,14 +373,19 @@
             padding: var(--space-sm) var(--space-lg);
             border: 1px solid rgba(74, 111, 255, 0.3);
             border-radius: 30px;
-            font-size: 11px;
-            letter-spacing: 2px;
+            font-size: clamp(8px, 1.8vw, 11px);
+            letter-spacing: clamp(0.5px, 0.3vw, 1.5px);
             text-transform: uppercase;
             color: var(--primary);
             background: linear-gradient(135deg, rgba(74, 111, 255, 0.15), rgba(139, 92, 246, 0.15));
             backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
+            max-width: 95%;
+            text-align: center;
+            line-height: 1.4;
+            word-wrap: break-word;
+            hyphens: auto;
         }
 
         .status-badge::before {
@@ -764,9 +786,11 @@
             }
 
             .status-badge {
-                font-size: 9px;
-                padding: var(--space-xs) var(--space-md);
-                letter-spacing: 1.5px;
+                font-size: clamp(7px, 2.2vw, 9px);
+                padding: var(--space-xs) var(--space-sm);
+                letter-spacing: clamp(0.3px, 0.5vw, 1px);
+                line-height: 1.3;
+                max-width: 98%;
             }
 
             main {
@@ -841,9 +865,10 @@
             }
 
             .status-badge {
-                font-size: 8px;
+                font-size: clamp(6px, 2.5vw, 8px);
                 padding: 6px var(--space-sm);
-                letter-spacing: 1px;
+                letter-spacing: clamp(0.2px, 0.4vw, 0.8px);
+                line-height: 1.2;
             }
 
             .hero-title {
@@ -932,6 +957,13 @@
             header {
                 padding-top: var(--space-xs);
                 padding-bottom: var(--space-sm);
+            }
+
+            .status-badge {
+                font-size: clamp(6px, 1.5vh, 8px);
+                padding: 4px var(--space-xs);
+                letter-spacing: clamp(0.2px, 0.3vw, 0.6px);
+                line-height: 1.2;
             }
 
             main {
@@ -1044,6 +1076,40 @@
                 transform: translate(var(--tx), var(--ty)) scale(0);
             }
         }
+
+        /* Star Explosion Effect */
+        .star-explosion {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9995;
+        }
+
+        .explosion-particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+            pointer-events: none;
+        }
+
+        @keyframes explode-particle {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+            50% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 0.6;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--ex), var(--ey)) scale(0);
+            }
+        }
     </style>
 </head>
 <body>
@@ -1072,14 +1138,14 @@
     <div class="container">
         <!-- Header -->
         <header>
-            <div class="status-badge">In Development</div>
+            <div class="status-badge">Ready to Feel the Power of Real Problem-Solving Software?</div>
         </header>
 
         <!-- Main Content -->
         <main>
             <!-- Brand Section -->
             <div class="brand-section">
-                <h1 class="hero-title">GSIX5</h1>
+                <h1 class="hero-title">GSIX3</h1>
                 <div class="launching-text">Launching Soon</div>
             </div>
 
@@ -1285,10 +1351,10 @@
             });
 
             function animateCursor() {
-                cursorX += (mouseX - cursorX) * 0.3;
-                cursorY += (mouseY - cursorY) * 0.3;
-                followerX += (mouseX - followerX) * 0.1;
-                followerY += (mouseY - followerY) * 0.1;
+                cursorX += (mouseX - cursorX) * 0.5;
+                cursorY += (mouseY - cursorY) * 0.5;
+                followerX += (mouseX - followerX) * 0.15;
+                followerY += (mouseY - followerY) * 0.15;
 
                 cursor.style.left = cursorX + 'px';
                 cursor.style.top = cursorY + 'px';
@@ -1303,14 +1369,12 @@
             const hoverElements = document.querySelectorAll('.feature-card, .status-badge');
             hoverElements.forEach(el => {
                 el.addEventListener('mouseenter', () => {
-                    cursor.style.transform = 'translate(-50%, -50%) scale(2)';
-                    cursorFollower.style.transform = 'translate(-50%, -50%) scale(1.8)';
-                    cursorFollower.style.opacity = '0.6';
+                    cursor.classList.add('cursor-hover');
+                    cursorFollower.classList.add('cursor-hover');
                 });
                 el.addEventListener('mouseleave', () => {
-                    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-                    cursorFollower.style.transform = 'translate(-50%, -50%) scale(1)';
-                    cursorFollower.style.opacity = '0.3';
+                    cursor.classList.remove('cursor-hover');
+                    cursorFollower.classList.remove('cursor-hover');
                 });
             });
         }
@@ -1390,6 +1454,97 @@
                 e.currentTarget.style.transform = '';
             });
         });
+
+        // Random Star Explosions
+        function createStarExplosion() {
+            // Random position on screen
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            
+            const explosion = document.createElement('div');
+            explosion.className = 'star-explosion';
+            explosion.style.left = x + 'px';
+            explosion.style.top = y + 'px';
+            
+            // Create 8-12 particles
+            const particleCount = Math.floor(Math.random() * 5) + 8;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'explosion-particle';
+                
+                // Random angle
+                const angle = (Math.PI * 2 * i) / particleCount + (Math.random() - 0.5) * 0.5;
+                const distance = 60 + Math.random() * 80;
+                const ex = Math.cos(angle) * distance;
+                const ey = Math.sin(angle) * distance;
+                
+                particle.style.setProperty('--ex', ex + 'px');
+                particle.style.setProperty('--ey', ey + 'px');
+                
+                const duration = 3.5 + Math.random() * 2.0;
+                particle.style.animation = `explode-particle ${duration}s ease-out forwards`;
+                
+                // Random size variation
+                const size = 2 + Math.random() * 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                // Some particles are blue
+                if (Math.random() > 0.7) {
+                    particle.style.background = '#4A6FFF';
+                    particle.style.boxShadow = '0 0 6px rgba(74, 111, 255, 0.8)';
+                }
+                
+                explosion.appendChild(particle);
+            }
+            
+            document.body.appendChild(explosion);
+            
+            // Remove after animation completes
+            setTimeout(() => {
+                explosion.remove();
+            }, 6000);
+        }
+
+        // Create explosions at random intervals
+        function startStarExplosions() {
+            // Reduced chance of multiple explosions
+            const burstCount = Math.random();
+            let explosionsToCreate = 1;
+            
+            if (burstCount > 0.95) {
+                explosionsToCreate = 2; // Only 5% chance of double explosion
+            }
+            // Removed triple explosions
+            
+            // Create the explosions with slight delays between them
+            for (let i = 0; i < explosionsToCreate; i++) {
+                setTimeout(() => {
+                    createStarExplosion();
+                }, i * 200);
+            }
+            
+            // Longer, more spaced out intervals
+            const randomFactor = Math.random();
+            let nextInterval;
+            
+            if (randomFactor > 0.85) {
+                // 15% chance: medium (3-5 seconds)
+                nextInterval = Math.random() * 2000 + 3000;
+            } else if (randomFactor > 0.5) {
+                // 35% chance: long (5-8 seconds)
+                nextInterval = Math.random() * 3000 + 5000;
+            } else {
+                // 50% chance: very long pause (8-12 seconds)
+                nextInterval = Math.random() * 4000 + 8000;
+            }
+            
+            setTimeout(startStarExplosions, nextInterval);
+        }
+
+        // Start explosions after a delay
+        setTimeout(startStarExplosions, 3000);
     </script>
 </body>
 </html>
